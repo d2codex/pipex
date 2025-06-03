@@ -6,7 +6,7 @@
 #    By: diade-so <diade-so@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/26 08:40:31 by diade-so          #+#    #+#              #
-#    Updated: 2025/06/03 11:21:16 by diade-so         ###   ########.fr        #
+#    Updated: 2025/06/03 13:17:04 by diade-so         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@
 
 CC = cc
 FLAGS = -Wall -Werror -Wextra -g3
-INCLUDES = -I./libft -I./src
+INCLUDES = -I./libft -I./includes
 
 # **************************************************************************** #
 #                                 Target Name                                  #
