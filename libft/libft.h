@@ -6,20 +6,24 @@
 /*   By: diade-so <diade-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 14:39:49 by diade-so          #+#    #+#             */
-/*   Updated: 2025/06/01 13:37:03 by diade-so         ###   ########.fr       */
+/*   Updated: 2025/06/05 13:58:52 by diade-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# include "get_next_line.h"
 # include <ctype.h>
+# include <fcntl.h>
+# include <limits.h>
 # include <stddef.h>
 # include <string.h>
 # include <strings.h>
 # include <stdlib.h>
 # include <stdint.h>
 # include <stdbool.h>
+# include <unistd.h>
 
 typedef struct s_list
 {
@@ -71,4 +75,5 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
 #endif

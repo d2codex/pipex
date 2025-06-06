@@ -6,11 +6,17 @@
 /*   By: diade-so <diade-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/01 11:38:13 by diade-so          #+#    #+#             */
-/*   Updated: 2025/06/01 13:33:20 by diade-so         ###   ########.fr       */
+/*   Updated: 2025/06/05 13:38:12 by diade-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+void	write_error_exit(char *msg)
+{
+	write(2, msg, ft_strlen(msg));
+	exit(EXIT_FAILURE);
+}
 
 bool	is_empty_cmd(const char *cmd)
 {

@@ -76,7 +76,7 @@ void	find_and_exec_cmd(char **paths, char **cmds, char **envp)
 		free(full_path);
  		i++;
 	}
-	perror("execve fail");
+	perror("cmd[0]");
 	free_array(paths);
 	free_array(cmds);
 	exit(EXIT_FAILURE);
@@ -93,7 +93,7 @@ void	get_cmd_path(char *cmd, char **envp)
 		cmds = split_tokens(cmd, ' ');
 		execve(cmds[0], cmds, envp);
 		free_array(cmds);
-		print_error_exit("excve");
+		print_error_exit("cmd[0]");
 	}
 	raw_path = get_path_variable(envp);
 	if (!raw_path)

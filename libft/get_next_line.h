@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: diade-so <diade-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/21 16:47:58 by diade-so          #+#    #+#             */
-/*   Updated: 2025/06/05 10:37:16 by diade-so         ###   ########.fr       */
+/*   Created: 2025/01/13 16:14:14 by diade-so          #+#    #+#             */
+/*   Updated: 2025/06/03 22:32:36 by diade-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-int	main(int argc, char **argv, char **envp)
-{ 
-	t_pipex	p;
+# include "libft.h"
 
-	if (argc < 5)
-		write_error_exit("invalid number of args");
-	validate_args(argc, argv, envp);
-	exec_mid_cmds(argc, argv, &p, envp);
-	exec_last_cmd(argc, argv, &p, envp);	
-	while (wait(NULL) > 0);
-	return (0);
-}
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 5
+# endif
+
+# ifndef OPEN_MAX
+#  define OPEN_MAX 1024
+# endif
+
+char	*get_next_line(int fd);
+
+#endif
