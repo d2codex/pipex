@@ -56,12 +56,12 @@ static char	*leftover(char *buffer)
 	int		j;
 
 	i = 0;
-	if (buffer[0] == '\0')
-		return (free(buffer), buffer = NULL, NULL);
 	while (buffer[i] && buffer[i] != '\n')
 		i++;
 	if (buffer[i] == '\n')
 		i++;
+	if (buffer[i] == '\0')
+		return (free(buffer), buffer = NULL, NULL);
 	j = 0;
 	while (buffer[i + j] != '\0')
 		j++;
@@ -112,5 +112,7 @@ char	*get_next_line(int fd)
 		return (NULL);
 	line = extract_line(buffer[fd]);
 	buffer[fd] = leftover(buffer[fd]);
+	if (!buffer[fd])
+		free(buffer[fd]);
 	return (line);
 }

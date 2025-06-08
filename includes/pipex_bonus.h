@@ -6,7 +6,7 @@
 /*   By: diade-so <diade-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 13:37:38 by diade-so          #+#    #+#             */
-/*   Updated: 2025/06/06 10:05:27 by diade-so         ###   ########.fr       */
+/*   Updated: 2025/06/08 19:14:37 by diade-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ typedef struct s_pipex
 	int	prev_fd;
 	int	pipefd[2];
 	int	i;
-	int	here_doc;
 	pid_t	child;
 }	t_pipex;
 
@@ -65,7 +64,7 @@ char	**smart_split(char *str, char c);
 
 // prototypes for exec_bonus.c
 void    process_cmd(char *cmd, t_pipex *p, char **envp);
-void    init_input_fd(t_pipex *p, int cmd_start);
+void    init_input_fd(t_pipex *p, int cmd_start, char **argv);
 void    exec_mid_cmds_bonus(int argc, char **argv, t_pipex *p, char **envp);
 void    exec_last_cmd_bonus(int argc, char **argv, t_pipex *p, char **envp);
 

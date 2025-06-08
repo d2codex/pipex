@@ -6,29 +6,36 @@
 /*   By: diade-so <diade-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 18:12:36 by diade-so          #+#    #+#             */
-/*   Updated: 2025/06/06 10:07:09 by diade-so         ###   ########.fr       */
+/*   Updated: 2025/06/08 19:44:08 by diade-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "pipex_bonus.h"
 
 void	process_cmd(char *cmd, t_pipex *p, char **envp)
-{ if (dup2(p->in_fd, STDIN_FILENO) == -1)
+{ 
+	if (dup2(p->in_fd, STDIN_FILENO) == -1)
 		print_error_exit("dup2 in_fd");
 	if (dup2(p->out_fd, STDOUT_FILENO) == -1)
 		print_error_exit("dup2 out_fd");
-
 	if (p->in_fd != STDIN_FILENO)
 		close(p->in_fd);
 	if (p->out_fd != STDOUT_FILENO)
 		close(p->out_fd);
-	printf("Executing command: %s\n", cmd);
 	get_cmd_path(cmd, envp);
 }
 
-void	init_input_fd(t_pipex *p, int cmd_start)
+void	init_input_fd(t_pipex *p, int cmd_start, char **argv)
 {
-	if (p->i != cmd_start)
+	if (p->i == cmd_start)
+	{
+		if (is_here_doc(argv[1]))
+			p->in_fd = open(".here_doc_temp", O_RDONLY);
+		else
+			p->in_fd = open(argv[1], O_RDONLY);
+		if (p->in_fd == -1)
+			print_error_exit(argv[1]);
+	}
+	else
 		p->in_fd = p->prev_fd;
 }
 
@@ -48,7 +55,7 @@ void	exec_mid_cmds_bonus(int argc, char **argv, t_pipex *p, char **envp)
 			print_error_exit("Fork");
 		if (p->child == 0)
 		{
-			init_input_fd(p, cmd_start);
+			init_input_fd(p, cmd_start, argv);
 			close(p->pipefd[0]);
 			p->out_fd = p->pipefd[1];
 			process_cmd(argv[p->i], p, envp);
@@ -81,5 +88,6 @@ void	exec_last_cmd_bonus(int argc, char **argv, t_pipex *p, char **envp)
 			print_error_exit(argv[argc -1]);
 		process_cmd(argv[argc -2], p, envp);
 	}
-	close(p->prev_fd);
+	if (p->prev_fd > 2)
+		close(p->prev_fd);
 }

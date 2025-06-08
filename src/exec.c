@@ -18,7 +18,6 @@ void	process_cmd(char *cmd, t_pipex *p, char **envp)
 		print_error_exit("dup2 in_fd");
 	if (dup2(p->out_fd, STDOUT_FILENO) == -1)
 		print_error_exit("dup2 out_fd");
-
 	if (p->in_fd != STDIN_FILENO)
 		close(p->in_fd);
 	if (p->out_fd != STDOUT_FILENO)
@@ -66,6 +65,7 @@ void	exec_last_cmd(int argc, char **argv, t_pipex *p, char **envp)
 			O_WRONLY | O_CREAT | O_TRUNC, 0644);
 		process_cmd(argv[argc - 2], p, envp);
 	}
-	close(p->prev_fd);
+	if (p->prev_fd)
+		close(p->prev_fd);
 }
 
