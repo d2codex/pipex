@@ -6,14 +6,13 @@
 /*   By: diade-so <diade-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 14:39:49 by diade-so          #+#    #+#             */
-/*   Updated: 2025/06/05 13:58:52 by diade-so         ###   ########.fr       */
+/*   Updated: 2025/06/18 16:47:00 by diade-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include "get_next_line.h"
 # include <ctype.h>
 # include <fcntl.h>
 # include <limits.h>
@@ -75,5 +74,7 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+char	*get_next_line(int fd);
+int		ft_printf(const char *str, ...);
 
 #endif
