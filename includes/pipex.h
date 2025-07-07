@@ -6,7 +6,7 @@
 /*   By: diade-so <diade-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 13:37:38 by diade-so          #+#    #+#             */
-/*   Updated: 2025/06/05 13:37:29 by diade-so         ###   ########.fr       */
+/*   Updated: 2025/07/07 12:23:37 by diade-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,8 @@ void    exec_last_cmd(int argc, char **argv, t_pipex *p, char **envp);
 
 // prototypes for validate.c
 void    validate_args(int argc, char **argv, char **envp);
+
+// prototypes for child_utils.c
+int    reap_children(pid_t last_pid);
 
 #endif

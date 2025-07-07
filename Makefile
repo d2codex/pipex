@@ -6,7 +6,7 @@
 #    By: diade-so <diade-so@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/26 08:40:31 by diade-so          #+#    #+#              #
-#    Updated: 2025/06/18 13:46:16 by diade-so         ###   ########.fr        #
+#    Updated: 2025/07/07 12:25:49 by diade-so         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,9 +38,9 @@ BONUS_DIR = bonus
 # **************************************************************************** #
 
 SRC = $(addprefix $(SRC_DIR)/, main.c utils.c path_utils.c smart_split.c \
-	exec.c validate.c)
+	exec.c validate.c child_utils.c)
 
-SHARED = utils.c path_utils.c smart_split.c
+SHARED = utils.c path_utils.c smart_split.c child_utils.c
 
 BONUS_SRC = $(addprefix $(BONUS_DIR)/, main_bonus.c utils_bonus.c exec_bonus.c \
 	validate_bonus.c)

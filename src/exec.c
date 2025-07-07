@@ -6,7 +6,7 @@
 /*   By: diade-so <diade-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 11:15:58 by diade-so          #+#    #+#             */
-/*   Updated: 2025/06/03 22:27:29 by diade-so         ###   ########.fr       */
+/*   Updated: 2025/07/07 12:16:08 by diade-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,10 @@ void	exec_last_cmd(int argc, char **argv, t_pipex *p, char **envp)
 		p->in_fd = p->prev_fd;
 		p->out_fd = open(argv[argc - 1], 
 			O_WRONLY | O_CREAT | O_TRUNC, 0644);
+		if (p->out_fd < 0)
+			print_error_exit("open outfile");
 		process_cmd(argv[argc - 2], p, envp);
 	}
 	if (p->prev_fd)
 		close(p->prev_fd);
 }
-

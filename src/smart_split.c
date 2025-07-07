@@ -6,7 +6,7 @@
 /*   By: diade-so <diade-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 17:43:35 by diade-so          #+#    #+#             */
-/*   Updated: 2025/06/01 15:13:42 by diade-so         ###   ########.fr       */
+/*   Updated: 2025/07/07 13:17:47 by diade-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,30 +15,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
-/*
-typedef struct	s_copy_state
-{
-	size_t	i;
-	size_t	j;
-	bool	in_single;
-	bool	in_double;
-}	t_copy_state;
-
-void	free_array(char **arr)
-{
-	size_t	i;
-
-	if (!arr)
-		return ;
-	i = 0;
-	while (arr[i])
-	{
-		free(arr[i]);
-		i++;
-	}
-	free(arr);
-}
-*/
 
 size_t	count_tokens(char *s)
 {
@@ -164,23 +140,3 @@ char	**smart_split(char *str, char c)
 	str_arr[i] = NULL;
 	return (str_arr);
 }
-/*
-int	main(int argc, char **argv)
-{
-	char	**tokens;
-	int	i;
-
-	if (argc != 3)
-		return (1);
-	tokens = smart_split(argv[1], argv[2][0]);
-	if (!tokens)
-		return (1);
-	i = 0;
-	while(tokens[i])
-	{
-		printf("%s\n", tokens[i]);
-		i++;
-	}
-	free_array(tokens);
-	return (0);		
-}*/
